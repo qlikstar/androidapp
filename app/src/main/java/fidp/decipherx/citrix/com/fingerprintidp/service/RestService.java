@@ -27,7 +27,9 @@ public class RestService extends AsyncTask<Object, Object, Void> {
 
     private static String FIDP_SERVER_URL = "http://fidp.pasdev.net";
 
-    private String token;
+    private String fcmToken;
+
+    private String jwtToken;
 
     private String fqdn;
 
@@ -37,8 +39,9 @@ public class RestService extends AsyncTask<Object, Object, Void> {
         return fqdn;
     }
 
-    public RestService(String token, String username) {
-        this.token = token;
+    public RestService(String fcmToken, String jwtToken, String username) {
+        this.fcmToken = fcmToken;
+        this.jwtToken = jwtToken;
         this.username = username;
     }
 
@@ -50,8 +53,9 @@ public class RestService extends AsyncTask<Object, Object, Void> {
         try {
 
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("token", token);
-            jsonObject.put("username", username );
+            jsonObject.put("fcmToken", fcmToken);
+            jsonObject.put("jwtToken", jwtToken);
+            jsonObject.put("username", username);
 
             Log.i("Json" , jsonObject.toString());
 

@@ -50,13 +50,13 @@ public class CheckTokenService {
         return fqdn;
     }
 
-    public Boolean checkIfValidTokenScanned(String token) throws JSONException {
+    public Boolean checkIfValidTokenScanned(String fcmToken, String jwtToken) throws JSONException {
         Boolean isTokenValid = false;
         Gson gson = new Gson();
 
-        if (token.length()> 300){
+        if (jwtToken.length()> 300){
             //Toast.makeText(context, "Token " + token, Toast.LENGTH_LONG).show();
-            String[] tokenParts = token.split("\\.");
+            String[] tokenParts = jwtToken.split("\\.");
             if (tokenParts.length == 3) {
                 byte[] data = Base64.decode(tokenParts[1], Base64.DEFAULT);
                 String text = new String(data, StandardCharsets.UTF_8);
@@ -65,7 +65,7 @@ public class CheckTokenService {
 
                 clientId = jwtClaimSet.getClientId();
                 Log.i("Client Id from JWT : ", clientId);
-                fqdn = getFQDNFromRESTCall(token, username);
+                fqdn = getFQDNFromRESTCall(fcmToken, jwtToken, username);
                 isTokenValid = VerifyResponseObject.getVerified();
                 return isTokenValid;
             }else{
@@ -76,10 +76,12 @@ public class CheckTokenService {
 
     }
 
-    private String getFQDNFromRESTCall(String token, String username) throws JSONException {
-        //RestClientService restClientService = new RestClientService(context);
-        new RestService(token, username).execute();
-        Log.i("Token to POST : " , token);
+    private String getFQDNFromRESTCall(String fcmToken, String jwtToken, String username) throws JSONException {
+//        RestClientService restClientService = new RestClientService(context);
+
+        Log.i("FCM Token to POST ", fcmToken);
+        Log.i("JWT Token to POST " , jwtToken);
+        new RestService(fcmToken, jwtToken, username).execute();
 
         String fqdn =  VerifyResponseObject.getFqdn();
         //Log.i("FQDN retrieved : ", fqdn);

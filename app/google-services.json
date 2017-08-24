@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "50766406535",
+    "firebase_url": "https://fingerprint-idp.firebaseio.com",
+    "project_id": "fingerprint-idp",
+    "storage_bucket": "fingerprint-idp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50766406535:android:90cd8375e187a6ee",
+        "android_client_info": {
+          "package_name": "fidp.decipherx.citrix.com.fingerprintidp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50766406535-6ljfhp74tt3c3t0ccu2ieforr842ij5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiQS0m-_IlCWfi8eq0XyMEDQFJoMvZqs0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

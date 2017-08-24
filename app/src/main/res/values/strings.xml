@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fingerprint IDP</string>
+    <string name="allow">allow</string>
+    <string name="deny">deny</string>
 </resources>

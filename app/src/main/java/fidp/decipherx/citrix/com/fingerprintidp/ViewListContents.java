@@ -4,9 +4,11 @@ package fidp.decipherx.citrix.com.fingerprintidp;
  * Created by sanketmishra on 8/19/17.
  */
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -50,7 +52,8 @@ public class ViewListContents extends AppCompatActivity {
                 listView.setAdapter(adapter);
             }
         }
-
-
     }
+
+
 }
+

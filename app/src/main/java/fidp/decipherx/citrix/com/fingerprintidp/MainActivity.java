@@ -3,6 +3,7 @@ package fidp.decipherx.citrix.com.fingerprintidp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -93,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        //SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.FCM_PREF), Context.MODE_PRIVATE);
+        String fcmToken = FirebaseInstanceId.getInstance().getToken();
+
+        Log.i("FCM Token : ", fcmToken);
+
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if (result!= null) {
             if (isNetworkAvailable(this)) {
@@ -101,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 checkTokenService = new CheckTokenService(this);
                 checkTokenService.setUsername(USERNAME);
                 try {
-                    checkTokenService.checkIfValidTokenScanned(result.getContents());
+                    checkTokenService.checkIfValidTokenScanned(fcmToken, result.getContents());
                     db = new DatabaseHelper(this);
                     String clientId = checkTokenService.getClientId();
                     Log.i("Client Id : ", clientId);
