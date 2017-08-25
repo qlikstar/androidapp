@@ -1,4 +1,4 @@
-package fidp.decipherx.citrix.com.fingerprintidp;
+package fidp.decipherx.citrix.com.fingerprintidp.util;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -3,7 +3,6 @@ package fidp.decipherx.citrix.com.fingerprintidp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import fidp.decipherx.citrix.com.fingerprintidp.util.DatabaseHelper;
 import fidp.decipherx.citrix.com.fingerprintidp.model.VerifyResponseObject;
 import fidp.decipherx.citrix.com.fingerprintidp.service.CheckTokenService;
 
