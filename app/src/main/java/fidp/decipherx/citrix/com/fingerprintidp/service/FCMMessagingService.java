@@ -5,26 +5,21 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.graphics.Color;
 import android.provider.Settings;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Random;
 
-import java.util.Date;
-import java.util.StringTokenizer;
-
-import fidp.decipherx.citrix.com.fingerprintidp.MainActivity;
+import fidp.decipherx.citrix.com.fingerprintidp.NotificationActivity;
 import fidp.decipherx.citrix.com.fingerprintidp.R;
-import fidp.decipherx.citrix.com.fingerprintidp.ViewListContents;
-import fidp.decipherx.citrix.com.fingerprintidp.model.NotificationDisplay;
+//import fidp.decipherx.citrix.com.fingerprintidp.model.NotificationDisplay;
 
 /**
  * Created by sanketmishra on 8/23/17.
@@ -33,16 +28,16 @@ import fidp.decipherx.citrix.com.fingerprintidp.model.NotificationDisplay;
 public class FCMMessagingService extends FirebaseMessagingService {
 
 
-    private static final int NOTIFY_ID = 0;
+    private static final int NOTIFY_ID = new Random().nextInt(50000) + 1;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        String title = remoteMessage.getNotification().getTitle();
-        String message = remoteMessage.getNotification().getBody();
-        Log.i("Message", message );
+        super.onMessageReceived(remoteMessage);
+        String title = remoteMessage.getData().get("title");
+        String message = remoteMessage.getData().get("body");
+        //Log.i("Message", message );
 
-        NotificationDisplay.setNotificationMessage(message);
         String click_action = remoteMessage.getNotification().getClickAction();
 
         Intent intent = new Intent(click_action);

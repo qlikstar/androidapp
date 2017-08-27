@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper db;
     CheckTokenService checkTokenService;
     static LinkedHashMap<String,String> userProfile = new LinkedHashMap<>();
-    private final static String USERNAME = "sanket";
+    public final static String USERNAME = "sanket";
     private final static String IMEI ="6571682182679-80";
     private final static String PHONE_NUMBER = "(415) 640 0312";
     private final static String EMAIL_ADDRESS = "sanket.mishra@citrix.com";
@@ -131,14 +131,16 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                finally{
+                    VerifyResponseObject.setVerified(null);
+                    VerifyResponseObject.setFqdn(null);
+                }
             }else{
                 Toast.makeText(getApplicationContext(), "ERROR: Please check your internet connection and retry! ", Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(getApplicationContext(), "ERROR: Could not parse content! ", Toast.LENGTH_LONG).show();
         }
-
-        VerifyResponseObject.nullify();
         super.onActivityResult(requestCode,resultCode, data);
     }
 
