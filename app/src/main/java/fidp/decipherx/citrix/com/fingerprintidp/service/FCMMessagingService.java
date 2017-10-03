@@ -19,7 +19,6 @@ import java.util.Random;
 
 import fidp.decipherx.citrix.com.fingerprintidp.NotificationActivity;
 import fidp.decipherx.citrix.com.fingerprintidp.R;
-//import fidp.decipherx.citrix.com.fingerprintidp.model.NotificationDisplay;
 
 /**
  * Created by sanketmishra on 8/23/17.
@@ -42,12 +41,12 @@ public class FCMMessagingService extends FirebaseMessagingService {
 
         Intent intent = new Intent(click_action);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
         notificationBuilder.setContentTitle(title);
         notificationBuilder.setContentText(message);
-        notificationBuilder.setContentIntent(pendingIntent);
+        //notificationBuilder.setContentIntent(pendingIntent);
         notificationBuilder.setAutoCancel(true);
         notificationBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
         notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
